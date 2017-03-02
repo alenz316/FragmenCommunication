@@ -1,6 +1,5 @@
 package edu.calpoly.alenz.amazingactivities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
@@ -10,13 +9,13 @@ public abstract class ContractFragment<T> extends Fragment {
 
     @Override
     public void onAttach(Context context) {
+        super.onAttach(context);
         try {
-            mContract = (T)context;
+            mContract = (T) getActivity();
         } catch (ClassCastException e) {
             throw new IllegalStateException(context.getClass().getSimpleName()
                     + " does not implement " + getClass().getSimpleName() + "'s contract interface.", e);
         }
-        super.onAttach(context);
     }
 
     @Override
